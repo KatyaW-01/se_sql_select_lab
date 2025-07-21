@@ -7,12 +7,12 @@ import pandas as pd
 # Connect to the database
 conn = sqlite3.connect('data.sqlite')
 
+#employeeData table
 employee_data = pd.read_sql("""SELECT * FROM employees""", conn)
-print(employee_data)
+
 # STEP 2
 # Replace None with your code
 df_first_five = pd.read_sql("""SELECT employeeNumber,lastName FROM employees""",conn)
-print(df_first_five)
 
 # STEP 3
 # Replace None with your code
@@ -42,11 +42,15 @@ df_name_length = pd.read_sql("""SELECT length(lastName) AS name_length from empl
 # STEP 7
 # Replace None with your code
 df_short_title = pd.read_sql("""SELECT substr(jobTitle, 1, 2) AS short_title from employees""",conn)
-print(df_short_title)
+
+#order details table
+order_details = pd.read_sql("""SELECT * FROM orderDetails;""", conn) 
+print(order_details)
 
 # STEP 8
 # Replace None with your code
-sum_total_price = None
+sum_total_price = pd.read_sql("""SELECT CAST(round(priceEach * quantityOrdered) AS INTEGER) AS total_price from orderDetails""",conn).sum()
+
 
 # STEP 9
 # Replace None with your code
