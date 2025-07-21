@@ -24,7 +24,16 @@ df_alias = pd.read_sql("""SELECT lastName, employeeNumber AS ID FROM employees""
 
 # STEP 5
 # Replace None with your code
-df_executive = None
+df_executive = pd.read_sql("""
+SELECT jobTITLE,
+    CASE
+    WHEN jobtitle = "President"
+    OR jobTitle = "VP Sales" 
+    OR jobTitle = "VP Marketing" THEN "Executive"
+    ELSE "Not Executive"
+    END AS role
+  FROM employees;
+""",conn)
 
 # STEP 6
 # Replace None with your code
