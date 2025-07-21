@@ -37,11 +37,12 @@ SELECT jobTITLE,
 
 # STEP 6
 # Replace None with your code
-df_name_length = None
+df_name_length = pd.read_sql("""SELECT length(lastName) AS name_length from employees""",conn)
 
 # STEP 7
 # Replace None with your code
-df_short_title = None
+df_short_title = pd.read_sql("""SELECT substr(jobTitle, 1, 2) AS short_title from employees""",conn)
+print(df_short_title)
 
 # STEP 8
 # Replace None with your code
